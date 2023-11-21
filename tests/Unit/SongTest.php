@@ -1,16 +1,18 @@
 <?php
-
-namespace Tests\Unit;
-
 use PHPUnit\Framework\TestCase;
 
 class SongTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     */
-    public function test_example(): void
+    public function testSetTempo()
     {
-        $this->assertTrue(true);
+        $song = new Song();
+        $song->setTempo(120);
+        $this->assertSame(120, $song->getTempo());
+
+        $song->setTempo('80');
+        $this->assertSame(80, $song->getTempo());
+
+        $this->expectException(TypeError::class);
+        $song->setTempo(1.5);
     }
 }
