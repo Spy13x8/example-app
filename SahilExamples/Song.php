@@ -51,7 +51,7 @@ class Song {
 
     // Setter for tempo
     public function setTempo($tempo) {
-        $this->tempo = $tempo;
+//        $this->tempo = $tempo;
     }
 }
 
