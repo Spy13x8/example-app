@@ -25,6 +25,14 @@ Route::get('/', function () {
         return $veggiename;
 });*/
 
-Route::get('/veggies/{veggiename}', function (string $veggiename) {
+/*Route::get('/veggies/{veggiename}', function (string $veggiename) {
     return $veggiename;
 })->whereIn('veggiename', ['baigan', 'gobhi', 'aaloo','bhindi']);
+*/
+
+
+Route::get('/veggies/{veggiename}', function (string $veggiename) {
+    return view('veggies');
+})->whereIn('veggiename', ['baigan', 'gobhi', 'aaloo','bhindi']);
+
+?>
