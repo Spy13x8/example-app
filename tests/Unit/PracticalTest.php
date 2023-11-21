@@ -3,9 +3,9 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use SahilExamples\Practical; // Correct namespace import
 
-require(__DIR__.'/../../SahilExamples/Practical.php'); // Correct path to Practical.php
+require(__DIR__.'/../../SahilExamples/Practical.php');
+use practicals\Practical;
 
 class PracticalTest extends TestCase
 {
@@ -14,8 +14,9 @@ class PracticalTest extends TestCase
      */
     public function testAdd(): void
     {
-        $this->assertEquals(Practical::add(1, 3), 4);
+        $this->assertEquals(Practical::add(1,3), 4);
     }
 }
 
 ?>
+
