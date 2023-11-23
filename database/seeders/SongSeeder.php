@@ -13,15 +13,16 @@ class SongSeeder extends Seeder
     public function run(): void
     {
 
-            Song::create([
-                'artist' => 'Eminem',
-                'title' => 'Stan',
-            ]);
-    
-            Song::create([
-                'artist' => 'A P Dhillon',
-                'title' => 'With You',
-            ]);
-    
-        }
+        // Seed a few songs
+        Song::create([
+            'artist' => 'Eminem',
+            'title' => 'Stan',
+        ]);
+
+        Song::create([
+            'artist' => 'A P Dhillon',
+            'title' => 'With You',
+        ]);
+
+    }
     }
