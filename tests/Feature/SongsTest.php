@@ -13,17 +13,16 @@ class SongsTest extends TestCase
      */
     public function test_example(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-        /**
-     * A basic feature test songs.
-     */
-    public function testSongsOk(): void
-    {
         $response = $this->get('/songs');
 
         $response->assertStatus(200);
+    }
+
+    public function songs_static() {
+        $httpClient = new \GuzzleHttp\Client();
+        $response = $httpClient->get('/songs_static');
+
+        // Failing assertion to expect a 200 OK status code
+        $this->assertEquals(200, $response->getStatusCode());
     }
 }
