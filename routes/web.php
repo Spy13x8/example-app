@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Song;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,31 +17,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Route::get('/veggies/baigan', function () {
-    return 'Baigan';
-});*/
+Route::get('/veggies/{veggieName}', function ($veggieName) {
+    return $veggieName;
+})->where('veggieName', '[a-zA-Z]+'); // Accepts any alphabetical characters for veggieName
 
-/* Route::get('/veggies/{veggieName}', function (string $veggiename) {
-        return $veggiename;
-});*/
-
-Route::get('/veggies/{veggiename}', function (string $veggiename) {
-    return $veggiename;
-})->whereIn('veggiename', ['baigan', 'gobhi', 'aaloo','bhindi']);
-
-/*Route::get('/veggies/{veggiename}', function (string $veggiename) {
-    return view('veggies');
-})->whereIn('veggiename', ['baigan', 'gobhi', 'aaloo','bhindi']);*/
-Route::get('/songs_static', function () {
-    return view('songs_static');
+Route::get('/veggies/{veggieName}', function ($veggieName) {
+    $allowedVeggies = ['baigan', 'bhindi', 'aaloo', 'gobhi'];
+    
+    if (in_array($veggieName, $allowedVeggies)) {
+        return $veggieName;
+    } else {
+        abort(404);
+    }
 });
 
-Route::get('/songs', function () {
+Route::get('/playlists/{playlistId}', function ($playlistId) {
+    return view('playlist',[ 'songs' => Song::all(), 'playlistId' => $playlistId]);
+});
+
+Route::get('/songs_static', function () {
+    return view('songs_static'); 
+  });
+
+  Route::get('/songs', function () {
     return view('songs', [ 'songs' => Song::all() ] );
 });
 
-
-Route::get('/playlists/1', function (string $playlistId) {
-    return view('playlist',[ 'songs' => Song::all() ,'playlistId'=>$playlistId] );
+Route::get('/veggies', function () {
+    return view('veggies');
 });
-?>
